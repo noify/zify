@@ -184,7 +184,6 @@ function Swipe(container, options) {
   }
 
   function slide(to, slideSpeed) {
-
     // do nothing if already on requested slide
     if (index == to) return;
 
@@ -209,7 +208,6 @@ function Swipe(container, options) {
       while (diff--) move( circle((to > index ? to : index) - diff - 1), width * direction, 0);
 
       to = circle(to);
-
       move(index, width * direction, slideSpeed || speed);
       move(to, 0, slideSpeed || speed);
 
@@ -573,9 +571,9 @@ function Swipe(container, options) {
 			indicatorsWrap.addEventListener('click', function (e) {
 				var to = e.target.getAttribute('data-index')
 				if(to){
-					stop();
-
-					slide(to, speed);
+          stop();
+          
+					slide(parseInt(to), speed);
 				}
 			}, false);
 		}

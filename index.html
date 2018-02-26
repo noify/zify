@@ -21,6 +21,9 @@
 			<div class="swiper-slide swiper-4">
 					swiper 4
 			</div>
+			<div class="swiper-slide swiper-5">
+				swiper 5
+			</div>
 		</div>
 	</div>
 	<style scoped>
@@ -34,7 +37,10 @@
 		background: darkgoldenrod;
 	}
 	.swiper-4{
-		background: black;
+		background: green;
+	}
+	.swiper-5{
+		background: rebeccapurple;
 	}
 	.swiper-slide{
 		color: white;
@@ -90,7 +96,7 @@
 		// 	el: '#demo'
 		// })
 		var swipe = Swipe(document.getElementById('demo'), {
-		startSlide: 1,
+		startSlide: 0,
 		speed: 400,
 		auto: 3000,
 		continuous: true,
