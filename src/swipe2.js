@@ -111,9 +111,6 @@ function Swipe(container, options) {
 
     element.style.width = (slides.length * width) + 'px';
 
-		if (options.pagination) {
-			
-		}
     // stack elements
     var pos = slides.length;
     while(pos--) {
@@ -138,7 +135,7 @@ function Swipe(container, options) {
 
 		if (!browser.transitions) element.style.left = (index * -width) + 'px';
 		
-		if (options.pagination) {
+		if (options.pagination && !indicatorsWrap) {
 			indicatorsWrap = document.createElement('div')
 			indicators = indicatorsWrap.children
       addClass(indicatorsWrap, 'swipe-pagination-wrap')
@@ -147,7 +144,7 @@ function Swipe(container, options) {
 				addClass(indicator, 'swipe-pagination')
 				indicator.setAttribute('data-index', i);
 				indicatorsWrap.appendChild(indicator)
-			}
+      }
 			addClass(indicators[index], 'swipe-pagination-active')
 			container.appendChild(indicatorsWrap)
     }
