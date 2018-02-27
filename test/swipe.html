@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+	<div class="swipe" id="demo">
+		<div class="swipe-wrap">
+			<div class="swiper-slide swiper-1">
+					swiper 1
+			</div>
+			<div class="swiper-slide swiper-2">
+					swiper 2
+			</div>
+			<div class="swiper-slide swiper-3">
+					swiper 3
+			</div>
+			<div class="swiper-slide swiper-4">
+					swiper 4
+			</div>
+			<div class="swiper-slide swiper-5">
+				swiper 5
+			</div>
+		</div>
+	</div>
+	<style scoped>
+	.swiper-1{
+		background: palevioletred;
+	}
+	.swiper-2{
+		background: dodgerblue;
+	}
+	.swiper-3{
+		background: darkgoldenrod;
+	}
+	.swiper-4{
+		background: green;
+	}
+	.swiper-5{
+		background: rebeccapurple;
+	}
+	.swiper-slide{
+		color: white;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+	}
+	.swipe {
+		overflow: hidden;
+		visibility: hidden;
+		position: relative;
+	}
+	.swipe-wrap {
+		overflow: hidden;
+		position: relative;
+	}
+	.swipe-wrap > div {
+		float:left;
+		position: relative;
+	}
+	.swipe-pagination-wrap{
+		bottom: 5px;
+    left: 0;
+    width: 100%;
+		position: absolute;
+    text-align: center;
+    -webkit-transition: .3s opacity;
+    -o-transition: .3s opacity;
+    transition: .3s opacity;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    z-index: 10;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		-webkit-tap-highlight-color:transparent;
+	}
+	.swipe-pagination{
+		width: 8px;
+		height: 8px;
+		display: inline-block;
+		border-radius: 100%;
+		background: #000;
+		opacity: .2;
+		cursor: pointer;
+		margin: 0 4px;
+	}
+	.swipe-pagination.swipe-pagination-active{
+		opacity: 1;
+	}
+	</style>
+	<script src="../src/swipe2.js"></script>
+	<script>
+    // swipe({
+		// 	el: '#demo'
+		// })
+		var swipe = Swipe(document.getElementById('demo'), {
+		startSlide: 0,
+		speed: 400,
+		auto: 3000,
+		continuous: true,
+		disableScroll: false,
+		stopPropagation: false,
+		pagination: true,
+		callback: function(index, elem) {},
+		transitionEnd: function(index, elem) {}
+	})
+	</script>
+</body>
+</html>
