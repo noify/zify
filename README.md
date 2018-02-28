@@ -1,6 +1,69 @@
 # zify
 
-组件练习
+代码练习
+
+## MVVM框架
+
+如何实现简单的MVVM框架
+
+### 实现原理
+
+#### 虚拟DOM
+
+以下代码创建了一个虚拟DOM并插入网页中。
+
+```js
+var fragment = document.createDocumentFragment();
+var input = document.createElement('input');
+input.setAttribute('type', 'text');
+input.value = 'hello';
+fragment.appendChild(input);
+document.body.appendChild(fragment);
+```
+
+代码执行完毕后，你会发现网页上出现了一个value为 hello 的input。当你想要改变input的内容，只需要这样做：
+
+```js
+input.value = 'hello World !';
+```
+
+此时网页上的input也会变成 hello World !，这就是虚拟DOM的优势之一。
+
+#### Object.defineProperty(object, propertyname, descriptor)
+
+该方法会直接在一个对象上定义一个新的属性，或者是修改已存在的属性。最终这个方法会返回该对象。
+
+```js
+var data = { a: 1 }
+var val = data['a']
+Object.defineProperty(data, 'a', {
+	enumerable: true,
+	configurable: false,
+	get: function() {
+		console.log('get', val)
+		return val;
+	},
+	set: function(newVal) {
+		console.log('set', newVal)
+		val = newVal
+	}
+});
+```
+
+以上代码重写了data.a的get和set属性，起到了对属性的劫持作用，我们获取data.a或者给其赋值都会在控制打印出其值。
+
+### 实现思路
+
+1. observe 数据监听函数，对数据对象的所有属性进行监听，若属性发生变动便通知相应的 Watcher
+
+2. compile 解析函数，将真实DOM解析成虚拟DOM，处理相应的指令，将模板替换成数据，绑定相应的更新函数，并提供给 Watcher 可更新视图的函数
+
+3. Watcher 观察者，接收 observe 的属性变动的通知，然后使用 compile 提供的函数变更视图
+
+4. 入口函数
+
+实现代码[点击此处](src/vueify.js)
+
 
 ## swipe
 

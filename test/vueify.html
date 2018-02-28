@@ -15,7 +15,7 @@
         <span v-text="child.someStr"></span>
     </p>
     <p>{{getHelloWord}}</p>
-    <p v-html="child.htmlStr"></p>
+    <p v-html="htmlStr"></p>
     <button v-on:click="clickBtn">change model</button>
 	</div>
 
@@ -24,25 +24,25 @@
 	var vm = vueify({
 		el: '#demo',
 		data: {
-				someStr: 'hello ',
-				className: 'btn',
-				htmlStr: '<span style="color: #f00;">red</span>',
-				child: {
-						someStr: 'World !'
-				}
+			someStr: 'hello ',
+			className: 'btn',
+			htmlStr: '<span style="color: #f00;">red</span>',
+			child: {
+				someStr: 'World !'
+			}
 		},
 
 		computed: {
-				getHelloWord: function() {
-						return this.someStr + this.child.someStr;
-				}
+			getHelloWord: function() {
+				return this.someStr + this.child.someStr;
+			}
 		},
 
 		methods: {
-				clickBtn: function(e) {
-						var randomStrArr = ['childOne', 'childTwo', 'childThree'];
-						this.child.someStr = randomStrArr[parseInt(Math.random() * 3)];
-				}
+			clickBtn: function(e) {
+				var randomStrArr = ['childOne', 'childTwo', 'childThree'];
+				this.child.someStr = randomStrArr[parseInt(Math.random() * 3)];
+			}
 		}
 	});
 
